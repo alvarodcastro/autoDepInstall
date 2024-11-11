@@ -46,9 +46,9 @@ then
 
           echo "Trying to install ${package} at the following directory: ${base_path}";
           python -m build ${base_path} >./.log/${package}_install.log 2>./.log/${package}_error.log
-          if [[ $? -eq 0 ]];
+          if [[ $? -eq 1 ]];
           then
-              echo "Error trying to install ${package}, check de log at .log directory"
+              echo "[ERROR] trying to install ${package}, check de log at -> .log directory"
           fi
       done
     fi
