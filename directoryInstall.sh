@@ -29,17 +29,18 @@ then
       fi
     done
 
-        # Proceed with the installation
+    # Proceed with the installation
     if [[ ${#directoryList} -ne 0  ]];
     then
       echo "Number of files extracted: ${#directoryList}";
       installFile="setup.py";
       for package in $directoryList:
       do
-          cd $1;
+        installationDir=$(find ${package} -name "src")
+          # cd $1;
 
           echo "Trying to install ${package}";
-          cd $package;
+          python -m build ${installationDir}
 
       done
     fi
