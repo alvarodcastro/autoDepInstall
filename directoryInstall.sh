@@ -41,7 +41,7 @@ then
         installationDir=$(find ${package} -name "src")
           # cd $1;
 
-          echo "Trying to install ${package}";
+          echo "Trying to install ${package} at the following directory: ${installationDir}";
           python -m build ${installationDir}
 
       done
