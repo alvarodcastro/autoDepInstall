@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 if [[ $# -eq 1 ]];
 then
   echo "Analyzing directory $1";
