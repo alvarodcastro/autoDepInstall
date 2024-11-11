@@ -4,6 +4,7 @@ if [[ $# -eq 1 ]];
 then
   echo "Analyzing directory $1";
   cd $1 || { echo "Failed to change directory to $1"; exit 1; }
+  mkdir -p ./.log
   directoryList=()
   if [[ $? -eq 0 ]];
   then
@@ -44,8 +45,11 @@ then
           # cd $1;
 
           echo "Trying to install ${package} at the following directory: ${base_path}";
-          python -m build ${base_path}
-
+          python -m build ${base_path} >./.log/${package}_install.log 2>./.log/${package}_error.log
+          if [[ $? -eq 0 ]];
+          then
+              echo "Error trying to install ${package}, check de log at .log directory"
+          fi
       done
     fi
 
